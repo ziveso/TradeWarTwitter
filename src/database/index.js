@@ -16,7 +16,7 @@ firebase.initializeApp(apis);
 export const getDbRealTime = callback => {
   firebase
     .database()
-    .ref("/")
+    .ref("/count")
     .on("value", snap => {
       callback(snap.val());
     });
