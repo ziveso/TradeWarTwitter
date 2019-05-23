@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Line } from "react-chartjs-2";
 import { getDbRealTime } from "./database";
+import moment from "moment";
 
 const options = {
   scales: {
     yAxes: [
       {
         ticks: {
-          min: 0,
-          max: 100
+          min: 0
         }
       }
     ]
@@ -25,7 +25,11 @@ function App() {
   }, []);
 
   const getData = () => {
-    const labels = Object.keys(data);
+    const labels = Object.keys(data).map(d => {
+      return moment(d, "DD_MM_YY_hh")
+        .add(7, "hours")
+        .format("HH:mm");
+    });
     const value = Object.values(data);
     return {
       labels,
