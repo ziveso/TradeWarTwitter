@@ -15,3 +15,12 @@ save the tweets data to firebase
 on master
 ```
 
+
+# to test within my env
+```
+docker pull ziveso/spa-exam-frontend:latest
+```
+
+```
+docker run -p 5000:5000 -d ziveso/spa-exam-frontend
+```
